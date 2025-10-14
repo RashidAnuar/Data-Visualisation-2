@@ -1,0 +1,59 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": {"url": "poverty_unemployment_by_state_year.csv"},
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "timeUnit": "year"
+    }
+  },
+  "title": {"text":"Unemployment Rate in Malaysia (1984 - 2022)", "fontSize": 18, "fontWeight": "bold"},
+  "autosize": { "type": "fit", "contains": "padding" },
+    "width": "container",
+  "height": 400,
+  "layer": [
+    { 
+      "layer":[
+    {
+      "mark": {"type": "errorband", "extent": "ci"},
+      "encoding": {
+        "y": {
+          "field": "Unemployment rate",
+          "type": "quantitative",
+          "title": "Mean of Unemployment Rate (95% CIs)"
+        }
+      }
+    },
+    {
+      "mark": {"type":"line", "point": true},
+      "encoding": {
+        "y": {
+          "aggregate": "mean",
+          "field": "Unemployment rate"
+        }
+      }
+    },
+    {
+      "mark": {"type": "errorband", "extent": "ci"},
+      "encoding": {
+        "y": {
+          "field": "poverty_absolute",
+          "type": "quantitative",
+          "title": "Mean of Unemployment Rate (95% CIs)"
+        }
+      }
+    },
+    {
+      "mark": {"type":"line", "point": true},
+      "encoding": {
+        "y": {
+          "aggregate": "mean",
+          "field": "poverty_absolute"
+        },
+        "color":{"value": "red"}
+      }
+    }
+  ]
+  }
+  ] 
+}

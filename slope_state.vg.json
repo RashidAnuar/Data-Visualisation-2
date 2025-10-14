@@ -1,0 +1,22 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Slope Chart: Whatever",
+    "width": 400,
+    "height": 520,
+    "data": { "url": "poverty_unemployment_by_state_year.csv" },
+    "mark": {"type": "line", "point": {"filled": false, "fill": "white"}, "interpolate": "monotone"},
+    "transform": [
+        {"filter": "datum.Year == 1989 || datum.Year == 2022"}
+    ],
+    "encoding": {
+        "x": { "field": "Year", "type": "ordinal", "title": "Year", "axis": { "labelAngle": 0 } },
+        "y": { "field": "Unemployment rate", "type": "quantitative", "title": "Value (%)" },
+        "color": { "field": "State", "type": "nominal", "title": "State" },
+        "detail": { "field": "State" },
+        "tooltip": [
+            { "field": "State" },
+            { "field": "Year", "title": "Year" },
+            { "field": "Unemployment rate", "title": "Value (%)" }
+        ]
+    }
+}
