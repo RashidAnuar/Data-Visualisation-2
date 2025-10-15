@@ -1,33 +1,54 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": "Scatter Plot: Unemployment vs Absolute Poverty",
-    "width":550,
-    "height": 520,
+"autosize": { "type": "fit", "contains": "padding" },
+  "width": "container",    
+  "height": 580,
     "data": { "url": "poverty_unemployment_by_state_year.csv" },
     
     "layer": [
-    {"mark": "circle",
+    {"mark": {"type": "circle", "clip": true, "opacity": 0.8},
     "encoding": {
-        "x": { "field": "poverty_hardcore", "type": "quantitative", "title": "Absolute Poverty (%)" },
+        "x": { "field": "poverty_absolute", "type": "quantitative", "title": "Absolute Poverty (%)" },
         "y": { "field": "Unemployment rate", "type": "quantitative", "title": "Unemployment Rate (%)" },
-        "color": { "field": "State", "type": "nominal", "title": "State" },
+        "color": { "field": "State", "type": "nominal", "title": "State", 
+            "scale": {
+                "range": [
+      "#00A6D6",  
+      "#0072B2",  "#2E86C1", 
+      "#3B5DC9",  
+      "#5E60CE",  
+      "#6B6ECF",  
+      "#7A2DAF",  
+      "#9467BD",  
+      "#9B5DE5",  
+      "#8E63FF",  
+      "#C129A1",  
+      "#E03FD8",  
+      "#FFB000",  
+      "#FF9E2C",  
+      "#8C564B",  
+      "#7F7F7F",  
+      "#6C757D",  
+      "#A9761A"   
+    ]
+            }  },
         "tooltip": [
             { "field": "State" },
             { "field": "Year", "title": "Year" },
-            { "field": "poverty_hardcore", "title": "Absolute Poverty (%)" },
+            { "field": "poverty_absolute", "title": "Absolute Poverty (%)" },
             { "field": "Unemployment rate", "title": "Unemployment Rate (%)" }
         ],
-        "size": { "value": 250 }    }
+        "size": { "value": 100 }    }
 },
 {    "transform": [
         {
             "loess": "Unemployment rate",
-            "on": "poverty_hardcore"
-        }
+            "on": "poverty_absolute"       }
     ],
     "mark": { "type": "line", "color": "red", "strokeWidth": 3 },
     "encoding": {
-        "x": { "field": "poverty_hardcore", "type": "quantitative" },
+        "x": { "field": "poverty_absolute", "type": "quantitative" },
         "y": { "field": "Unemployment rate", "type": "quantitative" }
     }
 }

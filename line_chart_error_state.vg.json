@@ -3,57 +3,124 @@
   "data": {"url": "poverty_unemployment_by_state_year.csv"},
   "encoding": {
     "x": {
-      "field": "Year",
-      "timeUnit": "year"
-    }
+      "field": "Year", "axis": {"labelAngle": 0}    }
   },
-  "title": {"text":"Unemployment Rate in Malaysia (1984 - 2022)", "fontSize": 18, "fontWeight": "bold"},
+  "transform": [{"filter": "datum.Year >= 1995"}],
+  "title": {"text":"Unemployment Rate in Malaysia (1995 - 2022)", "fontSize": 18, "fontWeight": "bold"},
   "autosize": { "type": "fit", "contains": "padding" },
     "width": "container",
-  "height": 400,
+  "height": "container",
   "layer": [
-    { 
-      "layer":[
     {
-      "mark": {"type": "errorband", "extent": "ci"},
-      "encoding": {
-        "y": {
-          "field": "Unemployment rate",
-          "type": "quantitative",
-          "title": "Mean of Unemployment Rate (95% CIs)"
-        }
-      }
-    },
-    {
-      "mark": {"type":"line", "point": true},
-      "encoding": {
-        "y": {
-          "aggregate": "mean",
-          "field": "Unemployment rate"
-        }
-      }
-    },
-    {
-      "mark": {"type": "errorband", "extent": "ci"},
-      "encoding": {
-        "y": {
-          "field": "poverty_absolute",
-          "type": "quantitative",
-          "title": "Mean of Unemployment Rate (95% CIs)"
-        }
-      }
-    },
-    {
-      "mark": {"type":"line", "point": true},
-      "encoding": {
-        "y": {
-          "aggregate": "mean",
-          "field": "poverty_absolute"
+      "transform": [{ "calculate": "\"Unemployment rate\"", "as": "Series" }],
+      "layer": [
+        {
+          "mark": { "type": "errorband", "extent": "ci" },
+          "encoding": {
+            "y": {
+              "field": "Unemployment rate",
+              "type": "quantitative",
+              "title": "Mean rate (95% CIs)"
+            },
+            "color": {
+              "field": "Series",
+              "type": "nominal",
+              "scale": {
+                "domain": ["Unemployment rate", "Absolute poverty", "Relative poverty"],
+                "range": ["#4E79A7", "#000000", "#8E63FF"]
+              },
+              "legend": { "title": "Series" }
+            }
+          }
         },
-        "color":{"value": "red"}
-      }
+        {
+          "mark": { "type": "line", "point": { "filled": false, "fill": "antiquewhite" } },
+          "encoding": {
+            "y": { "aggregate": "mean", "field": "Unemployment rate", "type": "quantitative" },
+            "color": {
+              "field": "Series",
+              "type": "nominal",
+              "scale": {
+                "domain": ["Unemployment rate", "Absolute poverty", "Relative poverty"],
+                "range": ["#4E79A7", "#000000", "#8E63FF"]
+              },
+              "legend": { "title": "Series" }
+            }
+          }
+        }
+      ]
+    },
+
+    {
+      "transform": [{ "calculate": "\"Absolute poverty\"", "as": "Series" }],
+      "layer": [
+        {
+          "mark": { "type": "errorband", "extent": "ci" },
+          "encoding": {
+            "y": { "field": "poverty_absolute", "type": "quantitative" },
+            "color": {
+              "field": "Series",
+              "type": "nominal",
+              "scale": {
+                "domain": ["Unemployment rate", "Absolute poverty", "Relative poverty"],
+                "range": ["#4E79A7", "#000000", "#8E63FF"]
+              },
+              "legend": { "title": "Series" }
+            }
+          }
+        },
+        {
+          "mark": { "type": "line", "point": { "filled": false, "fill": "antiquewhite" } },
+          "encoding": {
+            "y": { "aggregate": "mean", "field": "poverty_absolute", "type": "quantitative" },
+            "color": {
+              "field": "Series",
+              "type": "nominal",
+              "scale": {
+                "domain": ["Unemployment rate", "Absolute poverty", "Relative poverty"],
+                "range": ["#4E79A7", "#000000", "#8E63FF"]
+              },
+              "legend": { "title": "Series" }
+            }
+          }
+        }
+      ]
+    },
+
+    {
+      "transform": [{ "calculate": "\"Relative poverty\"", "as": "Series" }],
+      "layer": [
+        {
+          "mark": { "type": "errorband", "extent": "ci" },
+          "encoding": {
+            "y": { "field": "poverty_relative", "type": "quantitative" },
+            "color": {
+              "field": "Series",
+              "type": "nominal",
+              "scale": {
+                "domain": ["Unemployment rate", "Absolute poverty", "Relative poverty"],
+                "range": ["#4E79A7", "#000000", "#8E63FF"]
+              },
+              "legend": { "title": "Series" }
+            }
+          }
+        },
+        {
+          "mark": { "type": "line", "point": { "filled": false, "fill": "antiquewhite" } },
+          "encoding": {
+            "y": { "aggregate": "mean", "field": "poverty_relative", "type": "quantitative" },
+            "color": {
+              "field": "Series",
+              "type": "nominal",
+              "scale": {
+                "domain": ["Unemployment rate", "Absolute poverty", "Relative poverty"],
+                "range": ["#4E79A7", "#000000", "#8E63FF"]
+              },
+              "legend": { "title": "Series" }
+            }
+          }
+        }
+      ]
     }
   ]
-  }
-  ] 
 }

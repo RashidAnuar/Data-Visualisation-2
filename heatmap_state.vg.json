@@ -2,8 +2,8 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "State × Year Heatmap: Poverty & Unemployment",
   "autosize": { "type": "fit", "contains": "padding" },
-    "width": "container",
-  "height": 420,
+  "width": "container",
+  "height": "container",
 
   "data": { "url": "poverty_unemployment_by_state_year.csv" },
 
@@ -13,36 +13,29 @@
       "value": "poverty_absolute",
       "bind": {
         "input": "select",
-        "options": [
-          "poverty_absolute",
-          "poverty_hardcore",
-          "poverty_relative",
-          "Unemployment rate"
-        ],
-        "labels": [
-          "Absolute poverty (%)",
-          "Hardcore poverty (%)",
-          "Relative poverty (%)",
-          "Unemployment rate (%)"
-        ]
+        "options": ["poverty_absolute", "poverty_relative", "Unemployment rate"],
+        "labels": ["Absolute poverty (%)", "Relative poverty (%)", "Unemployment rate (%)"]
       }
     },
-    { "name": "Year_Minimum", "value": 1984,
-      "bind": {"input": "range", "min": 1984, "max": 2024, "step": 1} },
-    { "name": "Year_Maximum", "value": 2024,
-      "bind": {"input": "range", "min": 1984, "max": 2024, "step": 1} }
+    {
+      "name": "Year_Minimum", "value": 1984,
+      "bind": { "input": "range", "min": 1984, "max": 2022, "step": 1 }
+    },
+    {
+      "name": "Year_Maximum", "value": 2022,
+      "bind": { "input": "range", "min": 1984, "max": 2022, "step": 1 }
+    }
   ],
 
   "transform": [
     { "filter": "datum.Year >= Year_Minimum && datum.Year <= Year_Maximum" },
 
     { "impute": "poverty_absolute", "groupby": ["State"], "key": "Year", "method": "value", "value": null },
-    { "impute": "poverty_hardcore", "groupby": ["State"], "key": "Year", "method": "value", "value": null },
     { "impute": "poverty_relative", "groupby": ["State"], "key": "Year", "method": "value", "value": null },
     { "impute": "Unemployment rate", "groupby": ["State"], "key": "Year", "method": "value", "value": null },
 
     {
-      "calculate": "Metric == 'poverty_absolute' ? datum.poverty_absolute : (Metric == 'poverty_hardcore' ? datum.poverty_hardcore : (Metric == 'poverty_relative' ? datum.poverty_relative : datum['Unemployment rate']))",
+      "calculate": "Metric == 'poverty_absolute' ? datum.poverty_absolute : (Metric == 'poverty_relative' ? datum.poverty_relative : datum['Unemployment rate'])",
       "as": "metric_value"
     },
 
@@ -59,7 +52,7 @@
   "encoding": {
     "x": {
       "field": "Year", "type": "ordinal", "title": "Year",
-      "sort": "ascending", "axis": {"labelAngle": 0}
+      "sort": "ascending", "axis": { "labelAngle": 0 }
     },
     "y": {
       "field": "State", "type": "nominal", "title": null,
@@ -68,15 +61,14 @@
     "color": {
       "field": "metric_value", "type": "quantitative",
       "scale": { "scheme": "blues" },
-      "legend": { "orient": "right" }
+      "legend": { "orient": "right", "title": "Rate (%)" }
     },
     "tooltip": [
       { "field": "State", "type": "nominal" },
       { "field": "Year", "type": "quantitative" },
-      { "field": "poverty_absolute",   "type": "quantitative", "title": "Absolute poverty (%)",  "format": ".2f" },
-      { "field": "poverty_hardcore",   "type": "quantitative", "title": "Hardcore poverty (%)",  "format": ".2f" },
-      { "field": "poverty_relative",   "type": "quantitative", "title": "Relative poverty (%)",  "format": ".2f" },
-      { "field": "Unemployment rate",  "type": "quantitative", "title": "Unemployment rate (%)", "format": ".2f" }
+      { "field": "poverty_absolute",  "type": "quantitative", "title": "Absolute poverty (%)",   "format": ".2f" },
+      { "field": "poverty_relative",  "type": "quantitative", "title": "Relative poverty (%)",   "format": ".2f" },
+      { "field": "Unemployment rate", "type": "quantitative", "title": "Unemployment rate (%)",  "format": ".2f" }
     ]
   }
 }

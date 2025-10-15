@@ -1,0 +1,13 @@
+1. Use a bolder, more eye-catching title to improve visual hierarchy. - done
+2. Combine the three similar maps into one and add a metric filter instead of showing them separately. - done
+3. Increase the size of the choropleth to act as the primary overview/KPI. -done
+4. Add text annotations across charts to provide key context and takeaways.
+5. Avoid red–green markers in the scatter plot; they are not color-blind friendly. -done 
+6. Limit the heatmap slider to available years (up to 2022) so 2023–2024 doesn’t appear empty. ---- DONE
+7. Rename the line chart’s x-axis to “Year” for clarity and consistency. - done 
+8. Tootltip for the line chart, the values can be rounded up to a lesser and consistent decimal place - cant be done
+
+
+Annotation on diagrams
+
+Make the choropleth in 

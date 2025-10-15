@@ -3,12 +3,13 @@
 
   "title": {
     "text": {
-      "expr": "('Malaysia: ' + (pMetric === 'poverty_absolute' ? 'Absolute Poverty' : (pMetric === 'poverty_relative' ? 'Relative Poverty' : 'Hardcore Poverty')) + ' by State (%) — 2022')"
+      "expr": "('Malaysia: ' + (Metric === 'poverty_absolute' ? 'Absolute Poverty' : (Metric === 'poverty_relative' ? 'Relative Poverty' : 'Hardcore Poverty')) + ' by State (%) — 2022')"
     },
     "fontSize": 18
   },
 
-  "width": 900,
+  "autosize": { "type": "fit", "contains": "padding" },
+    "width": "container",
   "height": 520,
   "projection": {"type": "equalEarth"},
 
@@ -19,10 +20,10 @@
 
   "params": [
     {
-      "name": "pMetric",
+      "name": "Metric",
       "value": "poverty_absolute",
       "bind": {
-        "input": "radio",
+        "input": "select",
         "options": ["poverty_absolute", "poverty_relative", "poverty_hardcore"],
         "labels": ["Absolute poverty (%)", "Relative poverty (%)", "Hardcore poverty (%)"]
       }
@@ -44,8 +45,8 @@
     { "filter": "datum.Year == 2022" },
 
     {
-      "calculate": "pMetric === 'poverty_absolute' ? datum['poverty_absolute'] : (pMetric === 'poverty_relative' ? datum['poverty_relative'] : datum['poverty_hardcore'])",
-      "as": "metric_value"
+      "calculate": "Metric === 'poverty_absolute' ? datum['poverty_absolute'] : (Metric === 'poverty_relative' ? datum['poverty_relative'] : datum['poverty_hardcore'])",
+      "as": "Rate (%)"
     }
   ],
 
@@ -53,9 +54,9 @@
 
   "encoding": {
     "color": {
-      "field": "metric_value",
+      "field": "Rate (%)",
       "type": "quantitative",
-      "scale": { "scheme": "oranges" },
+      "scale": { "scheme": "tealblues" },
       "legend": { "format": ".1f" }
     },
     "tooltip": [

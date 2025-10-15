@@ -9,7 +9,7 @@ h1 {
 }
 
 body {
-    background-color: rgb(19, 18, 71);
+    background-color: rgb(21, 20, 63);
 }
 
 
@@ -52,3 +52,8 @@ h1 {
     font-size: 14px;
 }
 
+.metric-explain { margin: 0; padding-left: 1rem; line-height: 1.4; font-size: 0.9rem;}
+.metric-explain li { margin-bottom: .35rem; }
+.metric-note { margin-top: .6rem; color: #555; }
+
+.section { margin: 32px 0; } 

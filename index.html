@@ -21,9 +21,10 @@
 <body>
   <div class="page">
 
+    <!-- Introduction -->
     <div class="pure-g">
-      <div class="pure-u-1-1">
-        <h1 style="text-align: center;">How Poverty and Unemployment Interact Across Malaysia’s States</h1>
+      <div class="pure-u-1-1" style="padding-bottom: 0%;">
+        <h1 style="text-align: center; font-family:Arial, Helvetica, sans-serif;">How Poverty and Unemployment Interact Across Malaysia</h1>
       </div>
     </div>
 
@@ -31,12 +32,18 @@
     <div class="pure-g">
       <div class="pure-u-1-2">
         <div class="description description-left">
-          <p> This visualisation examines how poverty and unemployment rate relate across Malaysia's state. </p>
+          <p> This visualisation examines how poverty and unemployment rate evolve across Malaysia's state and over time, revealing patterns of economic vulnerability and resilience.
+             By analysing poverty metrics (absolute, relative and hardcore poverty) alongside unemployment data, we uncovering how the economic vulnerability manifest across states and time periods </p>
         </div>
       </div>
       <div class="pure-u-1-2">
         <div class="description description-right">
-          <p> More explanation maybe</p>
+          <p> Use the available controls to navigate patterns </p>
+          <ul>
+            <li><strong>Metric</strong> dropdowns needs to be selected for interactive viewing</li>
+            <li><strong>Year Sliders</strong> focus on a period which update the chart instantly</li>
+            <li><strong>State Selection</strong> allows to inspect a state's trend</li>
+          </ul>
         </div>
       
       </div>
@@ -45,61 +52,115 @@
     
 
     <!-- pure grid group 3 column grid CHOROPLETH MAP left --> 
-    <div class="pure-g">
+    <div class="pure-g section">
       <div class="pure-u-2-3">
         <div id="vis2" class="vis-container"></div>
+        <p style="font-size:.9rem;color:#555;margin:.25rem 0 0;">
+  <strong>Metric</strong> dropdown — choose the poverty measure that colors the map
+</p>
+
       </div>
+
       <div class="pure-u-1-3">
         <div class="description description-right">
           <h2>Poverty Metric</h2>
-          <p>The first and second columns are combined. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa sapien
-            faucibus et molestie ac feugiat sed. Egestas purus viverra accumsan in nisl.</p>
-        </div>
+      <ul class="metric-explain">
+        <li><strong>Absolute poverty</strong> — Household income is <em>below the Poverty Line Income (PLI)</em> ; can't meet basic needs (food, housing, utilities, transport).</li>
+        <li><strong>Hardcore poverty</strong> — Income is <em>below the Food PLI</em> ; can't meet minimum calorie/food needs. <em>Subset of absolute poverty.</em></li>
+        <li><strong>Relative poverty</strong> — Income is <em>below 50% of the state's median</em> ; indicates deprivation vs local living standards.</li>
+      </ul>
+      <p class="metric-note"><small><strong>How to read:</strong> darker color = higher rate. Rates shown for the selected year; methods may change across years (e.g., revised PLI).</small></p>
+      <li ><p class="small-font"; style="font-size: small;"> Highest Absolute Poverty is in <strong>Sabah</strong> of <strong>19.7%</strong></p></li>
+      <li ><p class="small-font"; style="font-size: small;"> Highest Hardcore Poverty is in <strong>Sabah</strong> of <strong>1.2%</strong></p></li>
+      <li ><p class="small-font"; style="font-size: small;"> Highest Relative Poverty are in <strong>Sarawak, Sabah, Johor and Selangor</strong> of <strong>16.2%, 14.5%, 15.9% and 14.2%</strong> respectively</p></li>
+      <p style="font-size: 0.8rem; color: #555;"> <strong> As of the year 2022</strong>, Hardcore Poverty are approaching 0%, thus it no longer be a viable metric to continue with the investigation. This can be enforce by the heatmap</p>
       </div>
     </div>
     <!-- end pure grid group -->
 
     <!-- pure grid group 3 equal Column Scatter right-->
-    <div class="pure-g">
+    <div class="pure-g section">
       <div class="pure-u-1-3">
         <div class="description description-left">
-          <h2>Elaboration and Justification</h2>
-          <p>Using all three columns without merging. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat
-            sed. Egestas purus viverra accumsan in nisl. Egestas purus viverra accumsan in nisl.</p>
+          <h2 >Does poverty track unemployment?</h2>
+          <p style="font-size: 0.8rem;"><strong>Short answer:</strong> Yes—states with higher poverty generally have higher unemployment, but the strength of the link
+    varies across the range and through time.</p>
+
+
+    <p class="metric-note"><small><strong>How to read this chart:</strong> <ul style="font-size: 1rem; color: rgb(58, 56, 56);">
+      <li><b>Rightward</b> = higher poverty; <b>upward</b> = higher unemployment.</li>
+      <li>The <b>red line</b> is a fitted trend summarizing the average relationship.</li>
+      <li>Dots far <b>above</b> the line have unusually high unemployment for their poverty level; dots <b>below</b> the line are doing better than expected.</li>
+    </ul></small></p>
+
+    <h3 style="font-size: medium;">What this chart is saying</h3>
+    <ul style="font-size: 0.8rem;">
+      <li><b>Positive association:</b> <em>Unemployment</em> tends to increase as <em>poverty</em> increases which is in line with the idea that deprivation and poor local labour market coexists</li>
+      <li><b>Nonlinear pattern:</b> The trend flattens at low and high poverty before it steepens in the mid-range, suggesting that other factors limiting <em>unemployment</em></li>
+      <li><b>Spread matters:</b> Some states have <strong>extreme lower <em>unemployment</em> rate at similar <em>poverty</em> levels</strong>, which may be due to differences in industrial mix, migration or policy efficacy</li>
+    </ul>
+
+    <p style="font-size:.8rem;color:#555;margin:.25rem 0 0;padding-left: 1rem;">
+  <strong>Hover</strong> — over a point to see the state and year of the observation and it consequent values
+</p>
+
         </div>
       </div>
       <div class="pure-u-2-3">
         <div id="vis3" class="vis-container"></div>
       </div>
-    </div>
+    </div >
     <!-- end pure grid group -->
 
-    <!-- pure grid group 3 column grid CHOROPLETH MAP left --> 
+    <!-- pure grid group 3 column grid Heat MAP left --> 
     <div class="pure-g">
       <div class="pure-u-2-3">
         <div id="vis4" class="vis-container"></div>
+        
       </div>
       <div class="pure-u-1-3">
         <div class="description description-right">
-          <h2>Elaboration and Justification</h2>
-          <p>The first and second columns are combined. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa sapien
-            faucibus et molestie ac feugiat sed. Egestas purus viverra accumsan in nisl.</p>
+          <h2>Timing & persistence: When does it surge?</h2>
+      <ul class="metric-explain">
+    <li><strong>Recurring hotspots:</strong> <em>Sabah</em> and <em>Sarawak</em> remain darker than most states across decades, indicating inherently higher rates.</li>
+    <li><strong>Crisis surges:</strong> The map is noticeably darker in <em>1984–1990</em> and <em>2019–2021</em> after these surges the cells lighten, indicating recovery.</li>
+    <li><strong>Low phase:</strong> Many states lighten notably during <em>2012–2016</em>, suggesting a trough across metrics.</li>
+    <li><strong>Urban centres:</strong> <em>Kuala Lumpur</em> and <em>Putrajaya</em> remain among the lightest cells for most years.</li>
+    <li><strong>Metric behavior:</strong> <em>Poverty</em> typically lasts longer than <em>unemployment</em>, suggesting a slower rate of household recovery than the labor market recovery. <em>Unemployment</em>, on the other hand, exhibits brief, rapid surges.</li>
+  </ul>
+  <p style="font-size:.9rem;color:#555;margin:.35rem 0 0;font-size: .8rem;">
+  <strong>How to use</strong> —
+  <em>Metric</em>: pick the rate to colour the heatmap
+ <br>
+  <em>Year_Minimum</em> & <em>Year_Maximum</em>: drag the sliders to filter the chart <br>
+  to a specific time period (the map updates according to the sliders).<br>
+  Hover any cell for exact values; darker = higher rate & vice versa.
+</p>
         </div>
       </div>
     </div>
     <!-- end pure grid group -->
 
-    <!-- pure grid group 3 equal Column Scatter right-->
-    <div class="pure-g">
+    <!-- pure grid group 3 equal Multi Line right-->
+    <div class="pure-g section">
       <div class="pure-u-1-3">
         <div class="description description-left">
-          <h2>Elaboration and Justification</h2>
-          <p>Using all three columns without merging. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat
-            sed. Egestas purus viverra accumsan in nisl. Egestas purus viverra accumsan in nisl.</p>
+          <h2>Labour market shock & recoveries</h2>
+      <ul class="metric-explain">
+    <li><strong>1987-1989 surge:</strong> Unemployment spikes across almost all states, with several states
+        (e.g., Terengganu, Perak, Sarawak, Sabah,) peaking well above their long-run levels. Many series roughly double
+        from ~3 to 5% to ~6 to 12% before easing.</li>
+    <li><strong>Early 1990s recovery:</strong> Rates fall quickly after 1990, stabilising around ~2 to 4% for most states.</li>
+    <li><strong>COVID-19 shock (2020-2021):</strong> A shorter spike appears nationwide. Most states rise by ~1 to 2
+        percentage points (peaks around ~4 to 5%) and then fall again by 2022.</li>
+    <li><strong>Baseline differences:</strong> Sabah/Sarawak tend to sit on the higher side; Kuala Lumpur/Putrajaya are
+        among the lowest throughout.</li>
+  </ul>
+      <p style="font-size: 0.8rem; color: #474545;"><strong>In 1985-1986</strong> the Malaysian economy saw contractions in commodities, public spending, and early manufacturing, 
+        resulting in a significant increase in unemployment (see chart).</p>
+        <p style="font-size:.9rem;color:#555;margin:.25rem 0 0; ">
+    Use the <strong><em>State Selection</em></strong> dropdown to inspect a single state's  path and compare the 1987-1989 spike with the COVID-19 uptick.
+  </p>
         </div>
       </div>
       <div class="pure-u-2-3">
@@ -108,33 +169,51 @@
     </div>
     <!-- end pure grid group -->
 
-    <!-- pure grid group 3 column grid CHOROPLETH MAP left --> 
-    <div class="pure-g">
+    <!-- pure grid group 3 column grid CI Chart left --> 
+    <div class="pure-g section">
       <div class="pure-u-2-3">
         <div id="vis5" class="vis-container"></div>
+        <p style="font-size:.8rem;color:#555; padding-left: 2rem; ">
+    The <em>Error Band <strong>(shaded area)</strong></em> — shows the 95% confidence interval <br> 
+    around the mean line for each series; <br> wider bands = more variability <br> narrower bands = more precise estimate
+  </p>
       </div>
       <div class="pure-u-1-3">
         <div class="description description-right">
-          <h2>Elaboration and Justification</h2>
-          <p>The first and second columns are combined. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa sapien
-            faucibus et molestie ac feugiat sed. Egestas purus viverra accumsan in nisl.</p>
+          <h2>Do Poverty & Unemployment move together?</h2>
+      <ul class="metric-explain">
+    <li><strong>Common Movement:</strong> From 1995-2016, unemployment and absolute/relative poverty trend down together.</li>
+    <li><strong>Shock response:</strong> Unemployment shows short spikes (e.g., 2020-2022), while absolute poverty have sharp spikes. However relative poverty increase slightly</li>
+    <li><strong>Relative poverty is stickier:</strong> It declines more gradually and sits above absolute poverty across decades.</li>
+    <li><strong>Takeaway:</strong> There's a <em>moderate positive correlation</em> over time, but the series react on differently over time</li>
+  </ul>
+  <p style="font-size:.8rem;color:#555; padding-left: 1rem; ">
+    The <em><strong>Sudden Surge (2016-2019)</strong></em> in absolute poverty <br>In 2019, the Malaysian government updated the PLI to RM2,208 per month based on a new methodology. This new line was more realistic and aligned with international standards. 
+    Thus causes a statistical surge by correcting millions more Malaysian living in poverty
         </div>
       </div>
     </div>
     <!-- end pure grid group -->
 
-    <div class="pure-g">
-      <div class="pure-u-1-1 small-font">
-        <p>Data Source<br><a href="https://data.gov.my/" target="_blank">data.gov.my</a> <br> <a href="http://www.statistics.gov.my/portal-main/time-series" target="_blank">statistics.gov.my</a></p>
+    <!-- Footer Data Source Direct to The page  -->
+    <div class="pure-g section">
+     <div class="pure-u-1 small-font">
+        <div class="description description-right">
+        <p >Created by <strong>Abdul Rashid Anuar 34472630</strong><p>
+        <p>Data Source <br> MALAYSIA'S OFFICIAL OPEN DATA PORTAL — <a href="https://data.gov.my/data-catalogue/hh_poverty_state" target="_blank"">data.gov.my</a> 
+          <br> MINISTRY OF ECONOMY DEPARTMENT OF STATISTICS MALAYSIA OFFICIAL PORTAL — <a href="http://www.statistics.gov.my/portal-main/time-series" target="_blank;" style="font-size: small;" >statistics.gov.my</a></p>
+        </div>
       </div>
     </div>
+   
+   
+
 
   </div> <!-- End of page div -->
 
   <script type="text/javascript">
     var specVis1 = "unemployment_state.vg.json";
-    var specVis2 = "choropleth_cool_shit.vg.json";
+    var specVis2 = "choropleth_poverty_state.vg.json";
     var specVis3 = "scatter_state.vg.json";
     var specVis4 = "heatmap_state.vg.json"
     var specVis5 = "line_chart_error_state.vg.json"

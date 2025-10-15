@@ -3,7 +3,7 @@
   "title": {"text": "Unemployment Rate by State (1984 -2022)", "fontSize": 18},
   "autosize": { "type": "fit", "contains": "padding" },
     "width": "container",
-  "height": 460,
+  "height": 552,
   "data": { "url": "poverty_unemployment_by_state_year.csv" },
 
   "params":[
@@ -36,7 +36,7 @@
 
   "layer":[
     {
-      "mark": {"type": "line", "point": {"filled": false, "fill": "white"}, "strokeWidth": 2, "opacity": 0.7, "interpolate": "linear", "tooltip": true, "aria": true, "cursor": "pointer"},
+      "mark": {"type": "line", "point": true, "strokeWidth": 2, "opacity": 0.7, "interpolate": "linear", "tooltip": true, "aria": true, "cursor": "pointer"},
       "encoding": {
         "x": {"field": "year_num", "type": "quantitative", "title": "Year", "axis": {"format": "d"}},
         "y": {"field": "unemployment_rate", "type": "quantitative", "title": "Unemployment rate (%)"},
@@ -44,6 +44,27 @@
           "field": "State",
           "type": "nominal",
           "title": "State",
+          "scale": {
+                "range":[
+      "#00A6D6",  
+      "#0072B2",  "#2E86C1", 
+      "#3B5DC9",  
+      "#5E60CE",  
+      "#6B6ECF",  
+      "#7A2DAF",  
+      "#9467BD",  
+      "#9B5DE5",  
+      "#8E63FF",  
+      "#C129A1",  
+      "#E03FD8",  
+      "#FFB000",  
+      "#FF9E2C",  
+      "#8C564B",  
+      "#7F7F7F",  
+      "#6C757D",  
+      "#A9761A"   
+    ]
+            },
           "legend": {"orient": "right", "titleFontSize": 12, "labelFontSize": 10}
         },
         "tooltip": [
