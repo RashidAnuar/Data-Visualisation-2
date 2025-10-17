@@ -6,7 +6,7 @@
       "field": "Year", "axis": {"labelAngle": 0}    }
   },
   "transform": [{"filter": "datum.Year >= 1995"}],
-  "title": {"text":"Unemployment Rate in Malaysia (1995 - 2022)", "fontSize": 18, "fontWeight": "bold"},
+  "title": {"text":"How Unemployment and Poverty Moved in Malaysia, 1995–2022", "fontSize": 18, "fontWeight": "bold"},
   "autosize": { "type": "fit", "contains": "padding" },
     "width": "container",
   "height": "container",

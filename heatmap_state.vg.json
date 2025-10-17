@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "State × Year Heatmap: Poverty & Unemployment",
+  "title": {"text":"State x Year Heatmap: Poverty & Unemployment", "fontSize": 18, "fontWeight":"bold"},
   "autosize": { "type": "fit", "contains": "padding" },
   "width": "container",
   "height": "container",

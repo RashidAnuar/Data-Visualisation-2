@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Scatter Plot: Unemployment vs Absolute Poverty",
+    "title": {"text":"Scatter Plot: Unemployment vs Absolute Poverty", "fontSize": 18, "fontWeight":"bold"},
 "autosize": { "type": "fit", "contains": "padding" },
   "width": "container",    
   "height": 580,

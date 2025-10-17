@@ -5,7 +5,8 @@
     "text": {
       "expr": "('Malaysia: ' + (Metric === 'poverty_absolute' ? 'Absolute Poverty' : (Metric === 'poverty_relative' ? 'Relative Poverty' : 'Hardcore Poverty')) + ' by State (%) — 2022')"
     },
-    "fontSize": 18
+    "fontSize": 18, "fontWeight":"bold"
+    
   },
 
   "autosize": { "type": "fit", "contains": "padding" },
